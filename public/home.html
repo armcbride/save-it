@@ -20,12 +20,20 @@
         <hr class="my-4">
         <div class="card">
             <div class="card-body" style=" text-align: center;">
-                <h2>Create a User</h2>
+                <h2>Enter a Note!</h2>
                 
-               <form class= "create-user" action="/submit" method="post">
+               
+                <form action="/submit" method="post">
                     <p><input type="text" name="user" placeholder="Username"></p>
                     <input class="btn btn-primary btn-lg" type="submit">
-                </form>
+                <p><input type="text" name="title" placeholder="Title"></p>
+                <p><textarea type="text" name="body" placeholder="Write Note Here"></textarea></p>
+                <p><input class="btn btn-primary btn-lg" type="submit"></p>
+                <div class="icons">
+                    <a class="btn btn-primary btn-sm" href="/notes">view notes</a>
+                    <a class="btn btn-primary btn-sm" href="/user">view profile</a>
+                </div>
+            </form>
             </div>
           </div>
         
@@ -36,5 +44,4 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script src= "./assets/js/home.js"></script>
 </html>

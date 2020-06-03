@@ -18,17 +18,21 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { useNewUrlParser: true });
 
-// app.post("/add", ({ user }, res) => {
-// db.User.create(user)
-//   .then(dbUser => {
-//     console.log(dbUser);
-//     res.json(dbUser);
-//   })
-//   .catch(({ message }) => {
-//     console.log(message);
-//     res.json(err);
-//   });
-// });
+app.listen(PORT, () => {
+  console.log(`App running on: http://localhost:${PORT}`);
+});
+
+
+app.post("/submit", ({user}, res)=> {
+  db.User.create(user)
+  .then(dbUser => {
+      console.log(dbUser);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+    });
+
+});
 
 
 app.get("/notes", (req, res) => {
@@ -41,7 +45,7 @@ app.get("/notes", (req, res) => {
     });
 });
 
-app.post("/submit", ({ user, body }, res) => {
+app.post("/submit", ({ body }, res) => {
     db.User.create(user)
      db.Note.create(body)
     .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { notes: _id } }, { new: true }))
@@ -72,8 +76,4 @@ app.get("/populateduser", (req, res) => {
     .catch(err => {
       res.json(err);
     });
-});
-
-app.listen(PORT, () => {
-  console.log(`App running on port http://localhost:${PORT}`);
 });
